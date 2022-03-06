@@ -4,11 +4,20 @@
     padding: 0;
 }
 
+body{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    /* justify-content: center; */
+}
 
 header{
     background-color: rgb(206, 204, 204);
     padding: 30px;
     padding-left: 50px;
+    width: 100%;
 }
 
 .overlay{
@@ -22,7 +31,11 @@ header{
 }
 
 .overlay.active{
-    display: block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: xx-large;
+    color:white;
 }
 
 .popup{
@@ -43,6 +56,30 @@ header{
     /* text-align: center; */
     padding: 20px;
     
+}
+
+.winnerDialog{
+    position:fixed;
+    top:0;
+    left: 0;
+    display: none;
+    width:50vw;
+    height: 50vh;
+    background-color:  rgba(0, 0, 0, 0.5);;
+    z-index: 1;
+}
+
+.winnerDialog.active{
+    display: flex;
+    flex-direction: column;
+    transform: translate(50%,50%);
+    /* text-align: center; */
+    justify-content: center;
+    padding: 20px;
+    align-items: center;
+    font-size: xx-large;
+    font-weight: 900;
+    color: white;
 }
 
 
@@ -80,6 +117,14 @@ header{
     width: 150px;
     height: 50px;
     font-size: large;
+    padding: 5px;
+}
+
+.details .pTwo{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
 }
 
 .details .imgP{
@@ -102,9 +147,16 @@ header{
 
 
 .container{
-    margin-left: auto;
-    margin-right: auto;
+    /* margin-left: auto; */
+    /* margin-right: auto; */
+    /* display: flex; */
+    /* flex-grow: 2; */
+    /* flex-basis: 1; */
+    /* flex-direction: column; */
+    /* align-items: center; */
+    /* justify-content: center; */
     margin-top: 200px;
+
     height: 500px;
     width: 500px;
 }
@@ -120,6 +172,18 @@ header{
     /* justify-items: center; */
     /* justify-content: center; */
     gap: 20px;
+    position: relative;
+}
+
+.line{
+    width: 80%;
+    height: 0px;
+    z-index: 1;
+    left: 0;
+    background-color: black;
+    transition: width 5s ease-in-out;
+    position:absolute;
+    /* transform: translate(20px,30px) rotate(0deg); */
 }
 
 .gameGrid .box{
@@ -131,6 +195,7 @@ header{
     align-items: center;
     justify-content: center;
     background-color: azure;
+    cursor: pointer;
     /* align-self: center; */
     /* justify-self: center; */
 }
@@ -138,4 +203,45 @@ header{
 .gameGrid .box:hover{
     transform: scale(1.1);
     background-color: rgb(204, 248, 248);
+}
+
+
+
+.box.x{
+    /* content: "❌"; */
+    font-size: 100px;
+    cursor: not-allowed;
+}
+
+.box.circle{
+    /* content: "⭕"; */
+    font-size: 100px;
+    cursor: not-allowed;
+}
+
+.gameGrid.x .box:not(.x):not(.circle):hover::before{
+    content: "❌";
+    opacity: 0.2;
+    font-size: 100px;
+}
+
+.gameGrid.circle .box:not(.x):not(.circle):hover::before{
+    content: "⭕";
+    opacity: 0.2;
+    font-size: 100px;
+}
+
+.reset{
+    /* margin-left: auto; */
+    /* width: 100px; */
+    /* margin-right: auto; */
+    margin-top: 50px;
+    
+}
+
+.reset button{
+    box-sizing: border-box;
+    padding: 20px 20px;
+    border-radius: 10px;
+    font-size: xx-large;
 }
